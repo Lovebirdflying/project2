@@ -213,10 +213,53 @@ var getUser = (req, res)=>{
         res.status(404).json({error :" user on the data base does not exist"})
     }
 
+
 };
 
 // Route to update a user by UID
 
+const forgetpassword = ( req, res)=>{
+    const userEmail = req.body.email
+    const user = userEmail
+    const password = user.password
+   console.log(user);
+
+   if(!password){
+
+    res.statu(400).json({error: "wrong password, "})
+
+    if(user.email === user){
+
+const newPassword = req.body
+
+if(newData.password){
+    user.password = newPassword.password;
+   }
+   usermodel.findOne({newPassword})
+   .then((done) => {
+   
+       res.status(200).json({
+           message: " password changed  successfully"
+       });
+       })
+       .catch((err)=> {
+           
+       
+           res.status(500).json({
+               message: " passwordchanged failed", err
+           });
+       })
+}
+   
+
+}
+
+
+  // You can add more fields to update as needed
+//bringUsertoFile();
+//res.status(200).json({data: newData, message: "User updated successfully"})
+
+}
 const updateUser = (req, res)=>{
 const userUID = parseInt(req.params.UID);
 const user = finduserId(userUID);
@@ -240,7 +283,7 @@ if(newData.password){
 }
 
   // You can add more fields to update as needed
-bringUsertoFile();
+//bringUsertoFile();
 res.status(200).json({data: newData, message: "User updated successfully"})
 }
 

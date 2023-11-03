@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 
 const express = require("express");
 const bodyparser = require("body-parser");
-const { Signup, Login, updateUser, getUser, deleteUser, ChangePassword} = require("./system");
+const { Signup, Login, updateUser, getUser, deleteUser, ChangePassword, forgetpassword} = require("./system");
 const Middlewareauthentication = require("./middleware/auth")
 const app = express();
 const PORT = process.env.PORT;
@@ -22,6 +22,7 @@ app.get("/user/:UID", getUser);
 app.patch("/user/:UID", Middlewareauthentication, updateUser);
 app.delete("/user/:UID",Middlewareauthentication, deleteUser);
 app.patch("/user/:UID/Changepassword", ChangePassword)
+app.post("/user/:email/forgetpassword", forgetpassword)
 
 // Handle 404 Not Found error
 
